@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getAllProducts } from "../api/product.api"
 import ProductCard from "../components/ProductCard"
+import { Link } from "react-router-dom"
 
 export function Home() {
   const [products, setProducts] = useState([])
@@ -64,9 +65,9 @@ export function Home() {
 
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">Trending Products</h2>
-          <a href="/products" className="text-sm font-medium hover:underline">
+          <Link to="/products" className="text-sm font-medium hover:underline">
             View all
-          </a>
+          </Link>
         </div>
 
         {loading ? (

@@ -24,27 +24,16 @@ export default function App() {
   return (
     <Routes>
 
-      {/* PUBLIC ROUTES */}
+      {/* PUBLIC */}
       <Route element={<PublicLayout />}>
-
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
-
       </Route>
 
 
-      {/* USER ROUTES */}
-      <Route
-        element={
-          <RequireAuth>
-            <UserLayout />
-          </RequireAuth>
-        }
-      >
+      {/* USER (Protected) */}
+      <Route element={<RequireAuth><UserLayout /></RequireAuth>}>
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
@@ -54,14 +43,8 @@ export default function App() {
       </Route>
 
 
-      {/* ADMIN ROUTES */}
-      <Route
-        element={
-          <RequireAuth allowedRoles={["ADMIN"]}>
-            <AdminLayout />
-          </RequireAuth>
-        }
-      >
+      {/* ADMIN */}
+      <Route element={<RequireAuth allowedRoles={["ADMIN"]}><AdminLayout /></RequireAuth>}>
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
       </Route>

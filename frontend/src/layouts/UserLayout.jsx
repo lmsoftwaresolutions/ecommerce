@@ -1,16 +1,17 @@
 import React from 'react'
 import { useAuth } from '../hooks/useAuth'
 import BaseNavbar from '../components/BaseNavbar'
-import { Outlet , Link } from "react-router-dom"
+import { Outlet, Link, useNavigate } from "react-router-dom"
 
 
 // Navbar component with user info and links
 function Navbar() {
   const { user, logout } = useAuth()
-  
+
+  const navigate = useNavigate()
   const handleLogout = () => {
     logout()
-    window.location.href = '/'
+    navigate("/")
   }
 
   const linkStyle =
@@ -52,7 +53,7 @@ function Navbar() {
   )
 }
 
-export function UserLayout({}) {
+export function UserLayout({ }) {
   return (
     <div className="min-h-screen bg-gray-50">
 

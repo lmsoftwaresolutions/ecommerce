@@ -57,12 +57,13 @@ export function AuthProvider({ children }) {
       setIsAuthenticated(true)
       // Redirect after login based on role
       console.log('Decoded role:', payload.role)
-      if (payload.role === 'ADMIN') {
-        window.location.href = '/admin/products'
-      } else {
-        window.location.href = '/products'
+      return {
+        user: { id: payload.sub, role: payload.role },
+        redirect:
+          payload.role === 'ADMIN'
+            ? '/admin/products'
+            : '/products'
       }
-      return { user: { id: payload.sub, role: payload.role } }
     } catch (error) {
       console.error('Login failed:', error)
       throw error

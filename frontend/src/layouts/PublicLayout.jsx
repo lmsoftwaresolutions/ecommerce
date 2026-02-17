@@ -9,19 +9,14 @@ function Navbar() {
 
         {/* Left */}
         <div className="flex items-center gap-6">
-          <a
-            href="/"
-            className="text-xl font-bold text-gray-900 tracking-tight"
-          >
+          <Link to="/" className="text-xl font-bold text-gray-900 tracking-tight">
+            
             E-Commerce
-          </a>
+          </Link>
 
-          <a
-            href="/products"
-            className="text-sm font-medium text-gray-700 hover:text-black transition"
-          >
+          <Link to="/products" className="text-sm font-medium text-gray-700 hover:text-black transition">
             Products
-          </a>
+          </Link>
         </div>
 
         {/* Right */}
